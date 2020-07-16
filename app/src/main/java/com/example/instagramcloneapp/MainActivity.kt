@@ -11,28 +11,28 @@ import androidx.navigation.ui.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var textView: TextView
+    private lateinit var textMessage: TextView
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.nav_home -> {
-                textView.text = "Home"
+                textMessage.text = "Home"
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_search -> {
-                textView.text = "Search"
+                textMessage.text = "Search"
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_add_post -> {
-                textView.text = "Add Post"
+                textMessage.text = "Add Post"
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_notifications -> {
-                textView.text = "Notifications"
+                textMessage.text = "Notifications"
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_profile -> {
-                textView.text = "Profile"
+                textMessage.text = "Profile"
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -46,6 +46,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        navView.setOnNavigationItemSelectedListener { onNavigationItemSelectedListener }
+        textMessage = findViewById(R.id.message)
+
+        navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+
+
     }
 }
