@@ -34,13 +34,13 @@ class SignUpActivity : AppCompatActivity() {
         val fullName = fullname_signup.text.toString()
         val userName = username_signup.text.toString()
         val email = email_signup.text.toString()
-        val passward = password_signup.text.toString()
+        val password = password_signup.text.toString()
 
         when{
             TextUtils.isEmpty(fullName) -> Toast.makeText(this,"full name is required.",Toast.LENGTH_LONG).show()
             TextUtils.isEmpty(userName) -> Toast.makeText(this,"user name is required.",Toast.LENGTH_LONG).show()
             TextUtils.isEmpty(email) -> Toast.makeText(this,"email is required.",Toast.LENGTH_LONG).show()
-            TextUtils.isEmpty(passward) -> Toast.makeText(this,"passward is required.",Toast.LENGTH_LONG).show()
+            TextUtils.isEmpty(password) -> Toast.makeText(this,"password is required.",Toast.LENGTH_LONG).show()
 
             else -> {
                 val progressDialog = ProgressDialog(this@SignUpActivity)
@@ -51,7 +51,7 @@ class SignUpActivity : AppCompatActivity() {
 
                 val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
-                mAuth.createUserWithEmailAndPassword(email,passward)
+                mAuth.createUserWithEmailAndPassword(email,password)
                     .addOnCompleteListener{task ->
                         if(task.isSuccessful)
                         {
@@ -76,8 +76,9 @@ class SignUpActivity : AppCompatActivity() {
 
         val userMap = HashMap<String, Any>()
         userMap["uid"] = currentUserID
-        userMap["username"] = currentUserID
-        userMap["email"] = currentUserID
+        userMap["fullname"] = fullName
+        userMap["username"] = userName
+        userMap["email"] = email
         userMap["bio"] = "hey i am using Coding Cafe Instagram Clone App."
         userMap["image"] = "https://firebasestorage.googleapis.com/v0/b/instagram-clone-app-d765f.appspot.com/o/Default%20Images%2Fprofile.png?alt=media&token=7170e225-9727-4d26-aebe-b6833699b5a6"
 
